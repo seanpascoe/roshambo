@@ -49,14 +49,16 @@ function youLose() {
   var el = document.getElementById("result");
   var bannerEl = document.getElementById("result-banner");
   el.innerHTML = '<i class="material-icons result-icons">thumb_down</i> You Lose!!';
-  bannerEl.classList += " red darken-1"
+  bannerEl.classList += " red darken-1";
+  scoreUpdate("comp-score");
 }
 
 function youWin() {
   var el = document.getElementById("result");
   var bannerEl = document.getElementById("result-banner");
   el.innerHTML = '<i class="material-icons result-icons">thumb_up</i> You Win!!';
-  bannerEl.classList += " green darken-1"
+  bannerEl.classList += " green darken-1";
+  scoreUpdate("user-score");
 }
 
 function tie() {
@@ -68,5 +70,12 @@ function tie() {
 
 function printChoice(playerID, choice, player) {
   var el = document.getElementById(playerID);
-  el.innerHTML = player + ": " + choice;
+  el.innerHTML = "<small>" + player + ":</small> " + choice;
+}
+
+function scoreUpdate(player) {
+  var scoreEl = document.getElementById(player);
+  var score = Number(scoreEl.innerHTML);
+  console.log(score);
+  scoreEl.innerHTML = score + 1;
 }
